@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import 'category.dart';
 import 'unit.dart';
-class Categoryroute extends StatelessWidget {
+
+
+class Categoryroute extends StatefulWidget {
+
+  @override
+  createState()=>_CategoryrouteState();
+
+}
+
+class _CategoryrouteState extends State<Categoryroute>{
+
   static const categoryn = <String>[
     'length',
     'area',
@@ -12,16 +22,18 @@ class Categoryroute extends StatelessWidget {
     'energy'
   ];
 
- static const icono=[
-   Icons.linear_scale,
-   Icons.layers,
-   Icons.assistant,
-   Icons.music_video,
-   Icons.alarm,
-   Icons.add_a_photo,
-   Icons.email,
- ];
 
+
+  static const icono=[
+    Icons.linear_scale,
+    Icons.layers,
+    Icons.assistant,
+    Icons.music_video,
+    Icons.alarm,
+    Icons.add_a_photo,
+    Icons.email,
+  ];
+  final categorie = <Category>[];
   static const base = <Color>[
     Colors.teal,
     Colors.orange,
@@ -32,6 +44,21 @@ class Categoryroute extends StatelessWidget {
     Colors.purpleAccent,
     Colors.red,
   ];
+
+  @override
+  void initState(){
+super.initState();
+for (var i = 0; i < categoryn.length; i++) {
+  categorie.add(Category(
+    name: categoryn[i],
+    color: base[i],
+    iconLocation: icono[i],
+    units:retrieve(categoryn[i]),
+  ));
+}
+
+
+  }
 
   Widget _builde(List<Widget> categories) {
     return (ListView.builder(
@@ -54,15 +81,7 @@ class Categoryroute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categorie = <Category>[];
-    for (var i = 0; i < categoryn.length; i++) {
-      categorie.add(Category(
-        name: categoryn[i],
-        color: base[i],
-        iconLocation: icono[i],
-        units:retrieve(categoryn[i]),
-      ));
-    }
+
 
     final listview = Container(
       color: Colors.green[100],
@@ -78,7 +97,7 @@ class Categoryroute extends StatelessWidget {
 
       )),
 
-    centerTitle: true,
+      centerTitle: true,
       backgroundColor: Colors.green[100],
     );
     return Scaffold(
@@ -86,4 +105,5 @@ class Categoryroute extends StatelessWidget {
       body: listview,
     );
   }
+
 }
