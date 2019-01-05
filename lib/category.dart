@@ -38,6 +38,8 @@ class Category extends StatelessWidget {
           name:name,
           units:units,
         ),
+
+resizeToAvoidBottomPadding: false,
       );
     }));
   }

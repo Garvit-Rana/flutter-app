@@ -32,6 +32,17 @@ class Homy extends StatelessWidget{
       debugShowCheckedModeBanner: true,
       title: "unit converter",
       home: Categoryroute(),
+      theme:ThemeData(
+        fontFamily: 'Raleway',
+
+        textTheme: Theme.of(context).textTheme.apply(
+        bodyColor:Colors.blue[700] ,
+        displayColor:Colors.yellow ,
+        ),
+        primaryColor: Colors.pink,
+        primarySwatch: Colors.cyan,
+      ),
+
 
     ));
   }
